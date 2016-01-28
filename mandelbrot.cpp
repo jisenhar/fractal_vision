@@ -16,11 +16,13 @@ MandelbrotGenerator::MandelbrotGenerator(){
         @param width Width of Mandelbrot set
 */
 void MandelbrotGenerator::fillBuffer(uint32_t frame[], int height, int width){
-        int row, col;
+        int row, col, i;
+        i=0;
         for(row=0; row<height; row++){
                 for(col=0; col<width; col++){
                         int time = escapeTime(row, col, height, width);
-                        frame[row+col] = getColor(time);
+                        frame[i] = getColor(time);
+                        i++;
                 }
         }
 }
