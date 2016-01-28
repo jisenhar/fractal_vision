@@ -84,3 +84,8 @@ void FractalRenderer::setScreenWidth(int width){
 void FractalRenderer::setScreenHeight(int height){
         screen_height = height;
 }
+
+void FractalRenderer::setScreen(SDL_Surface* p_screen){
+        screen = p_screen;
+}
+

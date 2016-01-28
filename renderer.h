@@ -31,6 +31,7 @@ class FractalRenderer{
 
                 void setScreenWidth(int width);
                 void setScreenHeight(int height);
+                void setScreen(SDL_Surface* p_screen);
 };
 
 #endif
