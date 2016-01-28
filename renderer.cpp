@@ -52,11 +52,13 @@ void FractalRenderer::drawScreen(){
 
         if(fractal != NULL){
                 fractal->fillBuffer(frame_buf, screen_height, screen_width);
+                int i = 0;
                 for (y=0; y < screen_height; y++){
                         for (x=0; x < screen_height; x++){
-                                char* pixel_pointer = ((char*)screen->pixels) + 4*(x + y*screen_width);
-                                uint32_t RGB = frame_buf[32*(x+y*screen_width)];
+                                char* pixel_pointer = ((char*)screen->pixels) + sizeof(char)*(x + y*screen_width);
+                                uint32_t RGB = frame_buf[i];
                                 *((uint32_t*)pixel_pointer) = RGB;
+                                i++;
                         }
                 }
         } else {

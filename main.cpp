@@ -7,9 +7,7 @@ SDL_Surface* screen;
 using namespace std;
 
 void refresh(FractalRenderer renderer){
-        while(1){
-                renderer.drawScreen();
-        }
+        renderer.drawScreen();
 }
 
 int main(){
