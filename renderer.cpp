@@ -56,7 +56,7 @@ void FractalRenderer::drawScreen(){
                 int i = 0;
                 // std::cout << "renderer" << std::endl;
                 for (y=0; y < screen_height; y++){
-                        std::cout << std::endl;
+                      //  std::cout << std::endl;
                         for (x=0; x < screen_height; x++){
                                 char* pixel_pointer = ((char*)screen->pixels) + sizeof(char)*(x + y*screen_width);
                                 uint32_t RGB = frame_buf[i];

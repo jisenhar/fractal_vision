@@ -25,9 +25,14 @@ void MandelbrotGenerator::fillBuffer(uint32_t* frame, int height, int width){
                 for(col=0; col<width; col++){
                         int time = escapeTime(row, col, height, width);
                         frame[i] = getColor(time);
-                        // cout << frame[i];
+                       /* uint32_t RGB = frame[i];
+                        uint8_t r = RGB >> 24;
+                        uint8_t g = RGB >> 16;
+                        uint8_t b = RGB >> 8;
+                        cout << '(' << int(r) << ' ' << int(g) << ' ' << int(b) << ") ";*/
                         i++;
                 }
+                cout << '\n';
         }
 }
 
@@ -64,7 +69,7 @@ int MandelbrotGenerator::escapeTime(int row, int col, int height, int width){
         @return 32-bit word containing an RGB color, r in high 8 bits, b next, g, next, alpha in low 8 bits
 */
 uint32_t MandelbrotGenerator::getColor(int escape_time){
-        /**double ratio = (2*(double)escape_time)/max_iterations;
+        /*double ratio = (2*(double)escape_time)/max_iterations;
         uint8_t r = (uint8_t)max(0.0, 255*(ratio-1)); //Red on one side
         uint8_t b = (uint8_t)max(0.0, 255*(1-ratio)); //Blue on the other
         uint8_t g = 255-b-r; //And green in the middle**/
@@ -72,16 +77,64 @@ uint32_t MandelbrotGenerator::getColor(int escape_time){
         uint8_t r;
         uint8_t b;
         uint8_t g;
-        if (escape_time < max_iterations){
-                r=0;
-                g=0;
-                b=0;
+        switch(escape_time){
+        case 0:
+                r = 255;
+                g = 0;
+                b = 0;
+                break;
+        case 1:
+                r = 255;
+                g = 127;
+                b = 0;
+                break;
+        case 2:
+                r = 255;
+                g = 255;
+                b = 0;
+                break;
+        case 3:
+                r = 127;
+                g = 255;
+                b = 0;
+                break;
+        case 4:
+                r = 0;
+                g = 255;
+                b = 0;
+                break;
+        case 5:
+                r = 0;
+                g = 255;
+                b = 127;
+                break;
+        case 6:
+                r = 0;
+                g = 255;
+                b = 255;
+                break;
+        case 7:
+                r = 0;
+                g = 0;
+                b = 255;
+                break;
+        case 8:
+                r = 127;
+                g = 0;
+                b = 255;
+                break;
+        case 9:
+                r = 255;
+                g = 0;
+                b = 255;
+                break;
+        case 10:
+                r = 255;
+                g = 255;
+                b = 255;
+                break;
         }
-        else{
-                r=255;
-                g=255;
-                b=255;
-        }
+                      
         uint32_t color = r; //And shift them all into a 32-bit word
         color = (color << 8) + b;
         color = (color << 8) + g;
