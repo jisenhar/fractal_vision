@@ -60,11 +60,24 @@ int MandelbrotGenerator::escapeTime(int row, int col, int height, int width){
         @return 32-bit word containing an RGB color, r in high 8 bits, b next, g, next, alpha in low 8 bits
 */
 uint32_t MandelbrotGenerator::getColor(int escape_time){
-        double ratio = (2*(double)escape_time)/max_iterations;
+        /**double ratio = (2*(double)escape_time)/max_iterations;
         uint8_t r = (uint8_t)max(0.0, 255*(ratio-1)); //Red on one side
         uint8_t b = (uint8_t)max(0.0, 255*(1-ratio)); //Blue on the other
-        uint8_t g = 255-b-r; //And green in the middle
+        uint8_t g = 255-b-r; //And green in the middle**/
         uint8_t alpha = 0; //Don't give a fuck about alpha
+        uint8_t r;
+        uint8_t b;
+        uint8_t g;
+        if (escape_time < max_iterations){
+                r=0;
+                g=0;
+                b=0;
+        }
+        else{
+                r=255;
+                g=255;
+                b=255;
+        }
         uint32_t color = r; //And shift them all into a 32-bit word
         color = (color << 8) + b;
         color = (color << 8) + g;
