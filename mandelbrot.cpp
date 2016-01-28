@@ -6,6 +6,9 @@
 
 using namespace std;
 
+MandelbrotGenerator::MandelbrotGenerator(){
+}
+
 /**
         Fills buffer with colors of a Mandelbrot set of given height and width
         @param frame[] Start of frame buffer array
