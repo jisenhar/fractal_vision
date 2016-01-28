@@ -1,8 +1,7 @@
-#include <iostream>
 #include <complex>
 #include <cstdint>
 #include <algorithm>
-#include "Mandelbrot.h"
+#include "mandelbrot.h"
 
 
 using namespace std;
@@ -14,14 +13,14 @@ using namespace std;
         @param width Width of Mandelbrot set
 */
 void MandelbrotGenerator::fillBuffer(uint32_t frame[], int height, int width){
-                        int row, col;
-                        for(row=0; row<height; row++){
-                                for(col=0; col<width; col++){
-                                        int time = escapeTime(row, col, height, width);
-                                        frame[row+col] = getColor(time);
-                                }
-                        }
+        int row, col;
+        for(row=0; row<height; row++){
+                for(col=0; col<width; col++){
+                        int time = escapeTime(row, col, height, width);
+                        frame[row+col] = getColor(time);
                 }
+        }
+}
 
 /**
         Calculates the escape time in number of iterations of the given point in the Mandelbrot set.
@@ -43,7 +42,7 @@ int MandelbrotGenerator::escapeTime(int row, int col, int height, int width){
         for(i=0; i<max_iterations; i++){
                 z_prev = z_prev*z_prev+c;
                 if(real(conj(z_prev)*z_prev) >= 4.0){
-                        return iteration;       
+                        return iteration;
                 }
                 iteration += 1;
         }
@@ -65,8 +64,5 @@ uint32_t MandelbrotGenerator::getColor(int escape_time){
         color = (color << 8) + b;
         color = (color << 8) + g;
         color = (color << 8) + alpha;
-        return color;        
-}
-
-int main(){
+        return color;
 }
