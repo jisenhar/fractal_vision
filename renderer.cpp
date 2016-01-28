@@ -46,6 +46,7 @@ void FractalRenderer::drawScreen(){
                 SDL_LockSurface(screen);
         }
 
+        /** TEST CODE **
         // let's draw some quick bullshit I think
         int x, y;
         int counter = 0;
@@ -59,6 +60,7 @@ void FractalRenderer::drawScreen(){
                         pixel_pointer[2] = x*y*counter;
                 }
         }
+        **/
 
         // another SDL secret handshake
         if (SDL_MUSTLOCK(screen)){

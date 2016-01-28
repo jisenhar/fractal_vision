@@ -3,6 +3,7 @@
 
 #include "SDL/SDL.h"
 #include "fractalgen.h"
+#include <cstdint>
 
 class FractalRenderer{
         private:
@@ -10,7 +11,6 @@ class FractalRenderer{
                 int screen_height;
                 SDL_Surface* screen;
                 FractalGenerator* fractal;
-
                 void getEvents();
         public:
                 FractalRenderer(SDL_Surface* p_screen,
