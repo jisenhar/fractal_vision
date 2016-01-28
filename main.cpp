@@ -38,7 +38,7 @@ int main(){
                 exit(1);
         }
         // initialize FractalGenerator and FractalRenderer objects
-        MandelbrotGenerator generator;
+        MandelbrotGenerator generator = MandelbrotGenerator();
         FractalRenderer renderer(screen, &generator, screen_width, screen_height);
 
         // begin rendering loop
