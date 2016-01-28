@@ -13,13 +13,13 @@ void refresh(FractalRenderer renderer){
 }
 
 int main(){
-        if (SDL_Init(SDL_INIT_VIDEO != 0)){
+        if (SDL_Init(SDL_INIT_VIDEO) != 0){
                 cout << "SDL_Init Error: " << SDL_GetError() << endl;
                 return 1;
         }
         const SDL_VideoInfo* info = SDL_GetVideoInfo();
         if (info == NULL){
-                cout << "Video info error: " << SDL_GetError() << endl;
+                cout << "Video info error: " << *SDL_GetError() << endl;
                 return 1;
         }
         // try to fullscreen

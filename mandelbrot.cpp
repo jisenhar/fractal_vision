@@ -1,7 +1,7 @@
 #include <complex>
 #include <cstdint>
 #include <algorithm>
-#include "mandelbrot.h"
+#include "Mandelbrot.h"
 
 
 using namespace std;
