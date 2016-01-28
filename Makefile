@@ -3,6 +3,8 @@ CFLAGS=-Wall `sdl-config --cflags --libs`
 
 all: main
 
+CXX = g++
+
 main: main.cpp Makefile
-	g++ -o $@ $< $(CFLAGS)
+	$(CXX) -o $@ $< $(CFLAGS) -std=c++11
 
