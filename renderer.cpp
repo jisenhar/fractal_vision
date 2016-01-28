@@ -1,6 +1,8 @@
 #include "renderer.h"
 #include <iostream>
 
+using namespace std;
+
 FractalRenderer::FractalRenderer(
                 SDL_Surface* p_screen,
                 FractalGenerator* p_fractal,
@@ -56,11 +58,11 @@ void FractalRenderer::drawScreen(){
                 int i = 0;
                 // std::cout << "renderer" << std::endl;
                 for (y=0; y < screen_height; y++){
-                        std::cout << std::endl;
+                        // cout << endl;
                         for (x=0; x < screen_height; x++){
-                                char* pixel_pointer = ((char*)screen->pixels) + sizeof(char)*(x + y*screen_width);
+                                uint8_t* pixel_pointer = ((uint8_t*)screen->pixels) + sizeof(uint32_t)*(x) + y*screen_width;
                                 uint32_t RGB = frame_buf[i];
-                                // std::cout << std::hex << RGB;
+                                // cout << hex << RGB;
                                 uint8_t red = RGB >> 24;
                                 uint8_t green = RGB >> 16;
                                 uint8_t blue = RGB >> 8;

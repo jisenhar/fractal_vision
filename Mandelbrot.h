@@ -8,7 +8,7 @@ class MandelbrotGenerator: public FractalGenerator{
                 MandelbrotGenerator();
 
         protected:
-                int max_iterations = 1000;
+                int max_iterations = 100;
                 int escapeTime(int row, int col, int height, int width);
                 uint32_t getColor(int escape_time);
 };
