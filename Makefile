@@ -6,5 +6,5 @@ all: main
 CXX = g++
 SOURCES = main.cpp renderer.cpp mandelbrot.cpp
 main: $(SOURCES) 
-	$(CXX) -o $@ $^ $(CFLAGS) -std=c++11
+	$(CXX) -o $@ $^ $(CFLAGS) -std=c++11 -g
 
