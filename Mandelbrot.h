@@ -4,7 +4,7 @@
 
 class MandelbrotGenerator: public FractalGenerator{
         public:
-                void fillBuffer(uint32_t frame[], int height, int width);
+                void fillBuffer(uint32_t* frame, int height, int width);
                 MandelbrotGenerator();
 
         protected:

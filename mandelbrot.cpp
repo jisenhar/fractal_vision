@@ -1,6 +1,7 @@
 #include <complex>
 #include <cstdint>
 #include <algorithm>
+#include <iostream>
 #include "Mandelbrot.h"
 
 
@@ -15,13 +16,16 @@ MandelbrotGenerator::MandelbrotGenerator(){
         @param height Height of Mandelbrot set
         @param width Width of Mandelbrot set
 */
-void MandelbrotGenerator::fillBuffer(uint32_t frame[], int height, int width){
+void MandelbrotGenerator::fillBuffer(uint32_t* frame, int height, int width){
         int row, col, i;
         i=0;
+        // cout << "mandelbrot" << endl;
         for(row=0; row<height; row++){
+                cout << endl;
                 for(col=0; col<width; col++){
                         int time = escapeTime(row, col, height, width);
                         frame[i] = getColor(time);
+                        // cout << frame[i];
                         i++;
                 }
         }
