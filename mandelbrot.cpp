@@ -19,9 +19,9 @@ MandelbrotGenerator::MandelbrotGenerator(){
 void MandelbrotGenerator::fillBuffer(uint32_t* frame, int height, int width){
         int row, col, i;
         i=0;
-        // cout << "mandelbrot" << endl;
+        // cout <<  "mandelbrot" << endl;
         for(row=0; row<height; row++){
-                cout << endl;
+                // cout << endl;
                 for(col=0; col<width; col++){
                         int time = escapeTime(row, col, height, width);
                         frame[i] = getColor(time);
@@ -134,7 +134,6 @@ uint32_t MandelbrotGenerator::getColor(int escape_time){
                 b = 255;
                 break;
         }
-                      
         uint32_t color = r; //And shift them all into a 32-bit word
         color = (color << 8) + b;
         color = (color << 8) + g;

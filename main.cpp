@@ -25,8 +25,8 @@ int main(){
         // try to fullscreen
         screen_width  = info->current_w;
         screen_height = info->current_h;
-        screen_width = 400;
-        screen_height = 400;
+        //screen_width = 400;
+        //screen_height = 400;
         int video_flags = 0;
         // setting SDL video flags -- first two for video performance
         video_flags |= SDL_GL_DOUBLEBUFFER;
