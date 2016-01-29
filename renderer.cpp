@@ -59,12 +59,12 @@ void FractalRenderer::drawScreen(){
                 // std::cout << "renderer" << std::endl;
                 for (y=0; y < screen_height; y++){
                         for (x=0; x < screen_height; x++){
-                                uint8_t* pixel_pointer = ((uint8_t*)screen->pixels) + sizeof(uint32_t)*(x) + y*screen_width;
+                                char* pixel_pointer = ((char*)screen->pixels) + 4*(x + y*screen_width);
                                 uint32_t RGB = frame_buf[i];
                                 // cout << hex << RGB;
-                                uint8_t red = RGB >> 24;
-                                uint8_t green = RGB >> 16;
-                                uint8_t blue = RGB >> 8;
+                                uint8_t red = (RGB >> 24) & 0xFF;
+                                uint8_t green = (RGB >> 16) & 0xFF;
+                                uint8_t blue = (RGB >> 8) & 0xFF;
                                 pixel_pointer[0] = red;
                                 pixel_pointer[1] = green;
                                 pixel_pointer[2] = blue;
@@ -76,7 +76,7 @@ void FractalRenderer::drawScreen(){
                 int counter = 0;
                 for (y = 0; y < screen_height; y++) {
                         for (x = 0; x < screen_width; x++) {
-                                char* pixel_pointer = ((char*)screen->pixels) + 4*(x + y*screen_width);
+                                char* pixel_pointer = ((char*)screen->pixels) + 4*(x) + y*screen_width;
                                 // Set the B, G, and R components separately.
                                 // The fourth byte is reserved for alpha, but not used in RGB video mode for alignment reasons.
                                 pixel_pointer[0] = x+y + counter;
