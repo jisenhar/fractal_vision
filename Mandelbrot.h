@@ -13,7 +13,7 @@ class MandelbrotGenerator: public FractalGenerator{
                 MandelbrotGenerator();
 
         protected:
-                int max_iterations = 100;
+                static const int max_iterations = 100;
                 int escapeTime(int row, int col, int height, int width);
                 double zoom = 1.0;
                 double pan_y = 0.0;
