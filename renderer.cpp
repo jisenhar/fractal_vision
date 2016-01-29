@@ -94,9 +94,9 @@ void FractalRenderer::drawScreen(){
                         uint8_t red = RGB >> 24;
                         uint8_t green = RGB >> 16;
                         uint8_t blue = RGB >> 8;
-                        pixel_pointer[0] = red;
+                        pixel_pointer[0] = blue;
                         pixel_pointer[1] = green;
-                        pixel_pointer[2] = blue;
+                        pixel_pointer[2] = red;
                         i++;
                 }
         }

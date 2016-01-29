@@ -66,7 +66,6 @@ int MandelbrotGenerator::escapeTime(int row, int col, int height, int width){
 }
 
 void MandelbrotGenerator::updateColorTable(int height, int width){
-        std::cout << "Entering color table\n";
         uint32_t *test_frame;
         test_frame = new uint32_t [height*width];
         int histogram[max_iterations+1] = {0};
@@ -76,16 +75,16 @@ void MandelbrotGenerator::updateColorTable(int height, int width){
         for(row=0; row<height; row++){
                 for(col=0; col<width; col++){
                         int time = escapeTime(row, col, height, width);
-                        test_frame[i] = time;
+                        test_frame[i] = time+1;
                         histogram[time]++;
                         i++;
-                        total_iterations += time;
+                        total_iterations += time+1;
                 }
         }
         total_iterations -= histogram[max_iterations]*max_iterations;
 
-        uint8_t start_red = 255, start_green = 175, start_blue = 25;
-        uint8_t end_red = 0, end_green = 255, end_blue = 255;
+        uint8_t start_red = 24, start_green = 158, start_blue = 0;
+        uint8_t end_red = 20, end_green = 0, end_blue = 158;
         uint8_t red_change = end_red - start_red;
         uint8_t green_change = end_green - start_green;
         uint8_t blue_change = end_blue - start_blue;
@@ -98,8 +97,6 @@ void MandelbrotGenerator::updateColorTable(int height, int width){
         for(j=0; j<=max_iterations; j++){
                 running_total += (histogram[j]*(j));
                 double percent = (double)running_total/(double)total_iterations;
-                cout << percent << '\n';
-                cout << running_total << ' ' << total_iterations << '\n';
                 if(j==max_iterations){
                         r = 0;
                         g = 0;
@@ -110,7 +107,6 @@ void MandelbrotGenerator::updateColorTable(int height, int width){
                         g =  start_green + (int)green_change*percent;
                         b =  start_blue + (int)blue_change*percent;
                 }
-                cout << '(' << int(r) << ' ' << int(g) << ' ' << int(b) << ") ";
                 color = r;
                 color = (color << 8) + g;
                 color = (color << 8) + b;
