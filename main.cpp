@@ -25,14 +25,14 @@ int main(){
         // try to fullscreen
         screen_width  = info->current_w;
         screen_height = info->current_h;
-        //screen_width = 400;
-        //screen_height = 400;
+        screen_width = 600;
+        screen_height = 400;
         int video_flags = 0;
         // setting SDL video flags -- first two for video performance
         video_flags |= SDL_GL_DOUBLEBUFFER;
         video_flags |= SDL_HWPALETTE;
         // fullscreen flag
-        video_flags |= SDL_FULLSCREEN;
+        //video_flags |= SDL_FULLSCREEN;
         screen = SDL_SetVideoMode(screen_width, screen_height, 32, video_flags);
         if (screen == NULL) {
                 cout << "Couldn't set video mode: " << SDL_GetError() << endl;

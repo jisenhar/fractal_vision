@@ -47,7 +47,10 @@ void MandelbrotGenerator::fillBuffer(uint32_t* frame, int height, int width){
 */
 int MandelbrotGenerator::escapeTime(int row, int col, int height, int width){
         complex<double> I(0, 1); //Define i, because C++ complex numbers are kinda gross
-        complex<double> c = ((double)((double)col/width)*3.5-2.5) + ((double)((double)row/height) -.5) * 2*I; //Formula from the pset
+        complex<double> pan(pan_x,pan_y);
+        complex<double> c = ((double)((double)col/(width))*3.5-2.5) + ((double)((double)row/(height)) -.5) * 2*I; //Formula from the pset
+        c = c/zoom;
+        c += pan;
         complex<double> z_prev(0,0);
         int i;
         int iteration = 0;
@@ -72,71 +75,34 @@ uint32_t MandelbrotGenerator::getColor(int escape_time){
         uint8_t r = (uint8_t)max(0.0, 255*(ratio-1)); //Red on one side
         uint8_t b = (uint8_t)max(0.0, 255*(1-ratio)); //Blue on the other
         uint8_t g = 255-b-r; //And green in the middle**/
-        uint8_t alpha = 0; //Don't give a fuck about alpha
-        /*
-        uint8_t r;
-        uint8_t b;
-        uint8_t g;
-        switch(escape_time){
-        case 0:
-                r = 255;
-                g = 0;
-                b = 0;
-                break;
-        case 1:
-                r = 255;
-                g = 127;
-                b = 0;
-                break;
-        case 2:
-                r = 255;
-                g = 255;
-                b = 0;
-                break;
-        case 3:
-                r = 127;
-                g = 255;
-                b = 0;
-                break;
-        case 4:
-                r = 0;
-                g = 255;
-                b = 0;
-                break;
-        case 5:
-                r = 0;
-                g = 255;
-                b = 127;
-                break;
-        case 6:
-                r = 0;
-                g = 255;
-                b = 255;
-                break;
-        case 7:
-                r = 0;
-                g = 0;
-                b = 255;
-                break;
-        case 8:
-                r = 127;
-                g = 0;
-                b = 255;
-                break;
-        case 9:
-                r = 255;
-                g = 0;
-                b = 255;
-                break;
-        case 10:
-                r = 255;
-                g = 255;
-                b = 255;
-                break;
-        }*/
+        int8_t alpha = 0; //Don't give a fuck about alpha
         uint32_t color = r; //And shift them all into a 32-bit word
         color = (color << 8) + b;
         color = (color << 8) + g;
         color = (color << 8) + alpha;
         return color;
+}
+
+void MandelbrotGenerator::increaseZoom(){
+        zoom = zoom * (double) 1.25; // 25 percent increase in zoom
+}
+
+void MandelbrotGenerator::decreaseZoom(){
+        zoom = zoom * (double) .75; // 25 percent decrease in zoom
+}
+
+void MandelbrotGenerator::panY(int direction){
+        if (direction){
+                pan_y += ((double) .1)/zoom;
+        } else {
+                pan_y -= ((double) .1)/zoom;
+        }
+}
+
+void MandelbrotGenerator::panX(int direction){
+        if (direction){
+                pan_x += ((double) .1)/zoom;
+        } else {
+                pan_x -= ((double) .1)/zoom;
+        }
 }
