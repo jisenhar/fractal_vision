@@ -46,6 +46,7 @@ void FractalRenderer::getEvents(){
 }
 
 void FractalRenderer::drawScreen(){
+        
         getEvents();                    // poll for events
         if (SDL_MUSTLOCK(screen)){      // SDL secret handshake
                 SDL_LockSurface(screen);
@@ -58,16 +59,16 @@ void FractalRenderer::drawScreen(){
                 int i = 0;
                 // std::cout << "renderer" << std::endl;
                 for (y=0; y < screen_height; y++){
-                        for (x=0; x < screen_height; x++){
+                        for (x=0; x < screen_width; x++){
                                 char* pixel_pointer = ((char*)screen->pixels) + 4*(x + y*screen_width);
                                 uint32_t RGB = frame_buf[i];
                                 // cout << hex << RGB;
                                 uint8_t red = (RGB >> 24) & 0xFF;
                                 uint8_t green = (RGB >> 16) & 0xFF;
                                 uint8_t blue = (RGB >> 8) & 0xFF;
-                                pixel_pointer[0] = red;
+                                pixel_pointer[0] = blue;
                                 pixel_pointer[1] = green;
-                                pixel_pointer[2] = blue;
+                                pixel_pointer[2] = red;
                                 i++;
                         }
                 }
