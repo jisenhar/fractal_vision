@@ -129,7 +129,7 @@ uint32_t MandelbrotGenerator::getColor(int escape_time){
         }
         else{
                // std::cout << "using other colors";
-                uint8_t alpha = 0; //Don't give a fuck about alpha
+                uint8_t alpha = 0; //Don't care about alpha
                 uint8_t r;
                 uint8_t b;
                 uint8_t g;
@@ -137,52 +137,52 @@ uint32_t MandelbrotGenerator::getColor(int escape_time){
                 uint8_t r = (uint8_t)max(0.0, 255*(ratio-1)); //Red on one side
                 uint8_t b = (uint8_t)max(0.0, 255*(1-ratio)); //Blue on the other
                 uint8_t g = 255-b-r; //And green in the middle**/
-                if(escape_time <= 10){
+                if(escape_time <= 1){
                         r = 255;
                         g = 0;
                         b = 0;
                 }
-                else if(10 < escape_time && escape_time <= 20){
+                else if(1 < escape_time && escape_time <= 2){
                         r = 255;
                         g = 127;
                         b = 0;
                 }
-                else if(20 < escape_time && escape_time <= 30){
+                else if(2 < escape_time && escape_time <= 3){
                         r = 255;
                         g = 255;
                         b = 0;
                 }
-                else if( 30 < escape_time && escape_time <= 40){
+                else if( 3 < escape_time && escape_time <= 4){
                         r = 127;
                         g = 255;
                         b = 0;
                 }
-                else if(40 < escape_time && escape_time <= 50){
+                else if(4 < escape_time && escape_time <= 5){
                         r = 0;
                         g = 255;
                         b = 0;
                 }
-                else if(50 < escape_time && escape_time <= 60){
+                else if(5 < escape_time && escape_time <= 6){
                         r = 0;
                         g = 255;
                         b = 127;
                 }
-                else if(60 < escape_time && escape_time <= 70){
+                else if(6 < escape_time && escape_time <= 7){
                         r = 0;
                         g = 255;
                         b = 255;
                 }
-                else if(70 < escape_time && escape_time <= 80){
+                else if(7 < escape_time && escape_time <= 8){
                         r = 0;
                         g = 0;
                         b = 255;
                         }
-                else if(80 < escape_time && escape_time <= 90){
+                else if(8 < escape_time && escape_time <= 9){
                         r = 127;
                         g = 0;
                         b = 255;
                         }
-                else if(90 < escape_time && escape_time < 100){
+                else if(9 < escape_time && escape_time < 100){
                         r = 255;
                         g = 0;
                         b = 255;
