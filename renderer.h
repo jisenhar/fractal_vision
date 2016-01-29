@@ -14,13 +14,17 @@ class FractalRenderer{
                 FractalGenerator* fractal;
                 uint32_t * frame_buf;
                 void getEvents();
+
+                int key_up = 0;
+                int key_down = 0;
+                int key_right = 0;
+                int key_left = 0;
+                int zoom_in = 0;
+                int zoom_out = 0;
+
         public:
                 FractalRenderer(SDL_Surface* p_screen,
                                 FractalGenerator* p_fractal,
-                                int width,
-                                int height);
-
-                FractalRenderer(SDL_Surface* p_screen,
                                 int width,
                                 int height);
 

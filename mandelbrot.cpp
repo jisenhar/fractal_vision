@@ -47,7 +47,10 @@ void MandelbrotGenerator::fillBuffer(uint32_t* frame, int height, int width){
 */
 int MandelbrotGenerator::escapeTime(int row, int col, int height, int width){
         complex<double> I(0, 1); //Define i, because C++ complex numbers are kinda gross
-        complex<double> c = ((double)((double)col/width)*3.5-2.5) + ((double)((double)row/height) -.5) * 2*I; //Formula from the pset
+        complex<double> pan(pan_x,pan_y);
+        complex<double> c = ((double)((double)col/(width))*3.5-2.5) + ((double)((double)row/(height)) -.5) * 2*I; //Formula from the pset
+        c = c/zoom;
+        c += pan;
         complex<double> z_prev(0,0);
         int i;
         int iteration = 0;
@@ -200,4 +203,28 @@ uint32_t MandelbrotGenerator::getColor(int escape_time){
                 return color;
         }
 
+}
+
+void MandelbrotGenerator::increaseZoom(){
+        zoom = zoom * (double) 1.25; // 25 percent increase in zoom
+}
+
+void MandelbrotGenerator::decreaseZoom(){
+        zoom = zoom * (double) .75; // 25 percent decrease in zoom
+}
+
+void MandelbrotGenerator::panY(int direction){
+        if (direction){
+                pan_y += ((double) .1)/zoom;
+        } else {
+                pan_y -= ((double) .1)/zoom;
+        }
+}
+
+void MandelbrotGenerator::panX(int direction){
+        if (direction){
+                pan_x += ((double) .1)/zoom;
+        } else {
+                pan_x -= ((double) .1)/zoom;
+        }
 }
